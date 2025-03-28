@@ -31,6 +31,6 @@ A simple and user-friendly weather app that fetches real-time weather data using
 ## 🛠️ Setup & Installation  
 1. Clone the repository:  
    ```sh
-   git clone https://github.com/your-username/weather-app.git<br>
+   git clone https://github.com/Tushar9794/-weather-app/edit/main/README.md<br>
    🤝 Contributing
 Contributions are welcome! Feel free to submit issues and pull requests.
