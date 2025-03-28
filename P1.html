@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?weather') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            transition: background 1s ease-in-out;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input {
+            width: 200px;
+        }
+        button {
+            background: #ff9800;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        #weather {
+            margin-top: 20px;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .weather-icon {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="location" placeholder="Enter location">
+        <button onclick="getWeather()">Get Weather</button>
+        <div id="weather"></div>
+    </div>
+    
+    <script>
+        document.getElementById('location').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                getWeather();
+            }
+        });
+        
+        function getWeather() {
+            let location = document.getElementById('location').value;
+            let apiKey = '8664c14ac2894f329ce80344252703';
+            let url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('weather').innerHTML = `
+                        <h2>${data.location.name}, ${data.location.country}</h2>
+                        <img class="weather-icon" src="${data.current.condition.icon}" alt="Weather icon">
+                        <p>Temperature: ${data.current.temp_c}°C</p>
+                        <p>Condition: ${data.current.condition.text}</p>
+                        <p>Humidity: ${data.current.humidity}%</p>
+                        <p>Wind: ${data.current.wind_kph} km/h</p>
+                    `;
+                    document.getElementById('weather').style.opacity = '1';
+                    
+                    // Update background based on weather condition
+                    document.body.style.background = `url('https://source.unsplash.com/1600x900/?${data.current.condition.text}') no-repeat center center fixed`;
+                    document.body.style.backgroundSize = 'cover';
+                })
+                .catch(error => {
+                    document.getElementById('weather').innerHTML = '<p style="color: red;">Invalid location or error fetching data</p>';
+                    document.getElementById('weather').style.opacity = '1';
+                });
+        }
+    </script>
+</body>
+</html>
