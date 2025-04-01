@@ -14,10 +14,10 @@ A simple and user-friendly weather app that fetches real-time weather data using
 <br>
 
 ## 🛠️ Technologies Used  
-- **HTML** / **CSS** for structure and styling <br>
-- **JavaScript** for interactivity <br>
-- **WeatherAPI** for fetching real-time weather data <br>
-- **Unsplash API** for dynamic weather backgrounds <br>
+- HTML** / **CSS** for structure and styling <br>
+- JavaScript** for interactivity <br>
+- WeatherAPI** for fetching real-time weather data <br>
+- Unsplash API** for dynamic weather backgrounds <br>
 
 <br>
 
