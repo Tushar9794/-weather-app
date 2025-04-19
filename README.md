@@ -33,4 +33,4 @@ A simple and user-friendly weather app that fetches real-time weather data using
    ```sh
    git clone https://github.com/Tushar9794/-weather-app/edit/main/README.md<br>
    🤝 Contributing
-Contributions are welcome! Feel free to submit issues and pull requests.
+Contributions are welcome!
