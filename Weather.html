@@ -76,8 +76,8 @@
 
     function getWeather() {
         let location = document.getElementById('location').value;
-        let apiKey = '8664c14ac2894f329ce80344252703';  
-        let url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=5&aqi=no&alerts=no`;
+        let apiKey = 'API KEY';  
+        let url = `URL`;
         
         fetch(url)
             .then(response => response.json())
