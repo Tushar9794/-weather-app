@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #6495ED;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .weather-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .forecast-card {
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+        .weather-icon {
+            width: 80px;
+        }
+       
+        .error-img {
+            width: 400px;  
+            height: auto;  
+            display: block;
+            margin: 20px auto;
+            max-width: 100%; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>☁️Weather App☁️</h1>
+    
+    <!-- Search Input -->
+    <div class="input-group mb-3">
+        <input type="text" id="location" class="form-control" placeholder="Enter location">
+        <button class="btn btn-primary" onclick="getWeather()">Search</button>
+    </div>
+    
+    <!-- Weather Info -->
+    <div id="weather" class="weather-card mt-3 d-none">
+        <h2 id="city"></h2>
+        <h1 id="temperature"></h1>
+        <p id="condition"></p>
+        <img id="icon" class="weather-icon" alt="Weather icon">
+        <p>Humidity: <span id="humidity"></span>%</p>
+        <p>Wind: <span id="wind"></span> km/h</p>
+    </div>
+    
+    <!-- Forecast -->
+    <div id="forecast" class="row mt-4"></div>
+</div>
+
+<script>
+    document.getElementById('location').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            getWeather();
+        }
+    });
+
+    function getWeather() {
+        let location = document.getElementById('location').value;
+        let apiKey = '8664c14ac2894f329ce80344252703';  
+        let url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=5&aqi=no&alerts=no`;
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('weather').classList.add('d-none');
+                    document.getElementById('forecast').innerHTML = `<img src="Error.gif" class="error-img" alt="Error">`;
+                    return;
+                }
+
+                // Update Current Weather
+                document.getElementById('weather').classList.remove('d-none');
+                document.getElementById('city').innerText = `${data.location.name}, ${data.location.country}`;
+                document.getElementById('temperature').innerText = `${data.current.temp_c}°C`;
+                document.getElementById('condition').innerText = data.current.condition.text;
+                document.getElementById('icon').src = "https:" + data.current.condition.icon;
+                document.getElementById('humidity').innerText = data.current.humidity;
+                document.getElementById('wind').innerText = data.current.wind_kph;
+
+             
+                let forecastHTML = '';
+                data.forecast.forecastday.forEach(day => { 
+                    let date = new Date(day.date);
+                    let dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+                    
+                    forecastHTML += `
+                        <div class="col-md-2 forecast-card">
+                            <h5>${dayName}</h5>
+                            <img src="https:${day.day.condition.icon}" class="weather-icon">
+                            <p>${day.date}</p>
+                            <p>${day.day.avgtemp_c}°C</p>
+                            <p>${day.day.condition.text}</p>
+                        </div>
+                    `;
+                });
+                document.getElementById('forecast').innerHTML = forecastHTML;
+            })
+            .catch(() => {
+                document.getElementById('weather').classList.add('d-none');
+                document.getElementById('forecast').innerHTML = `<img src="Error.gif" class="error-img" alt="Error">`;
+            });
+    }
+</script>
+
+</body>
+</html>
