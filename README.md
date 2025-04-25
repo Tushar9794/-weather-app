@@ -1,6 +1,8 @@
 # 🌦️ Interactive Weather App  
 
 A simple and user-friendly weather app that fetches real-time weather data using the [WeatherAPI](https://www.weatherapi.com/) and dynamically updates the background based on the weather conditions.  
+![My Image](ihttps://github.com/Tushar9794/-weather-app/blob/main/Photo.jpg)
+
 
 <br>
 
