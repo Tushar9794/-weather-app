@@ -1,10 +1,16 @@
 # 🌦️ Interactive Weather App  
 
 A simple and user-friendly weather app that fetches real-time weather data using the [WeatherAPI](https://www.weatherapi.com/) and dynamically updates the background based on the weather conditions.  
-![My Image](ihttps://github.com/Tushar9794/-weather-app/blob/main/Photo.jpg)
+![Weather App Screenshot](https://raw.githubusercontent.com/Tushar9794/-weather-app/main/Photo.jpg)
 
 
 <br>
+<br>
+
+
+<br>
+
+![Weather App Screenshot](https://raw.githubusercontent.com/Tushar9794/-weather-app/main/photo1.jpg)
 
 ## 🚀 Features  
 - 🌍 Fetch weather data for any location worldwide. <br>
@@ -15,12 +21,14 @@ A simple and user-friendly weather app that fetches real-time weather data using
 
 <br>
 
-## 🛠️ Technologies Used  
-- HTML** / **CSS** for structure and styling <br>
-- JavaScript** for interactivity <br>
-- WeatherAPI** for fetching real-time weather data <br>
-- Unsplash API** for dynamic weather backgrounds <br>
+<br>
+🛠️ Technologies Used
 
+
+| Frontend | API | Tools |
+|----------|-----|-------|
+| HTML / CSS | WeatherAPI | Git / GitHub |
+| JavaScript  | VS Code |
 <br>
 
 ## 🎯 How to Use  
@@ -30,9 +38,18 @@ A simple and user-friendly weather app that fetches real-time weather data using
 
 <br>
 
-## 🛠️ Setup & Installation  
-1. Clone the repository:  
-   ```sh
-   git clone https://github.com/Tushar9794/-weather-app/edit/main/README.md<br>
-   🤝 Contributing
-Contributions are welcome!
+## 📦 Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Tushar9794/-weather-app.git
+
+# 2. Navigate to the folder
+cd weather-app
+
+# 3. Open index file
+Start with Weather.html
+
+🤝 Contributing
+Contributions are welcome! Please fork the repo and submit a pull request. Make sure to follow conventional commits and keep your code clean and commented.
+
